@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		78876A5B363C730B235789634429AA64 /* UpgameVideoFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0292B543A9ED3FC480716DF145356E39 /* Build configuration list for PBXAggregateTarget "UpgameVideoFramework" */;
+			buildPhases = (
+				42716E96F8767B71EA57D15D810E52FE /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+			);
+			name = UpgameVideoFramework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		578C8D090DAE309084FB9D5C00ADD1E3 /* Pods-UpgameVideoFramework_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C4F28571E427E12E964F81D3D57F3998 /* Pods-UpgameVideoFramework_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A9BBD2F9613A6E3D417D5C870FA47FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		FD6DE1902FAA0A2B717E50E6DED3B855 /* Pods-UpgameVideoFramework_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF1B469B1D886AF2E6C31D4DE184C42 /* Pods-UpgameVideoFramework_Example-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E1A2F6AF979F892A9B311E18A3150CD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78876A5B363C730B235789634429AA64;
+			remoteInfo = UpgameVideoFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		15ADC1CD3E231FA7BD82231912F48268 /* Pods-UpgameVideoFramework_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UpgameVideoFramework_Example.release.xcconfig"; sourceTree = "<group>"; };
+		18F4D5905B4A83BD3A1512FBAD24619E /* Pods-UpgameVideoFramework_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-UpgameVideoFramework_Example-frameworks.sh"; sourceTree = "<group>"; };
+		24AAF8A6F059984A334BEAA49380AAAF /* UpgameVideoFramework.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = UpgameVideoFramework.xcframework; sourceTree = "<group>"; };
+		32F2EA697C6B9EAE6CD3B138C6E6162E /* Pods-UpgameVideoFramework_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UpgameVideoFramework_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		6471460CBE9E183F9AB6A99B2F77F2B2 /* Pods-UpgameVideoFramework_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-UpgameVideoFramework_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		6BC2847B5EDE6D5125614DE4B0FC4805 /* Pods-UpgameVideoFramework_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-UpgameVideoFramework_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		79AEEA8CDD3D00C566091A79EA655625 /* Pods-UpgameVideoFramework_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-UpgameVideoFramework_Example-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A2FF71A339C82B41FBD647A97BF077E0 /* Pods-UpgameVideoFramework_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-UpgameVideoFramework_Example"; path = Pods_UpgameVideoFramework_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFF1B469B1D886AF2E6C31D4DE184C42 /* Pods-UpgameVideoFramework_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UpgameVideoFramework_Example-dummy.m"; sourceTree = "<group>"; };
+		B08041E4E62CFEEC80A2559A47898208 /* UpgameVideoFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UpgameVideoFramework.debug.xcconfig; sourceTree = "<group>"; };
+		BB12F8362BBE349A30B542D18F3339D6 /* Pods-UpgameVideoFramework_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-UpgameVideoFramework_Example.modulemap"; sourceTree = "<group>"; };
+		C4380D0AD5A6F620CD9E90EBCFE507EE /* UpgameVideoFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UpgameVideoFramework.release.xcconfig; sourceTree = "<group>"; };
+		C4F28571E427E12E964F81D3D57F3998 /* Pods-UpgameVideoFramework_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UpgameVideoFramework_Example-umbrella.h"; sourceTree = "<group>"; };
+		EBC38432CBA1ED9C7436BEBAD47B2F20 /* UpgameVideoFramework-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "UpgameVideoFramework-xcframeworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2104C1ED064CB79179118C7BFDB321CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A9BBD2F9613A6E3D417D5C870FA47FF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		33A820E5F7D95F8D9CF0477603C273E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24AAF8A6F059984A334BEAA49380AAAF /* UpgameVideoFramework.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		33C99FA6C038EC8F447BA7F066477715 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2FF71A339C82B41FBD647A97BF077E0 /* Pods-UpgameVideoFramework_Example */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55AB31806A59935005B9F0DA39727FB3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D9B1547ADB92CA1D95E95B6A6436E2B /* Pods-UpgameVideoFramework_Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5D9B1547ADB92CA1D95E95B6A6436E2B /* Pods-UpgameVideoFramework_Example */ = {
+			isa = PBXGroup;
+			children = (
+				BB12F8362BBE349A30B542D18F3339D6 /* Pods-UpgameVideoFramework_Example.modulemap */,
+				6BC2847B5EDE6D5125614DE4B0FC4805 /* Pods-UpgameVideoFramework_Example-acknowledgements.markdown */,
+				6471460CBE9E183F9AB6A99B2F77F2B2 /* Pods-UpgameVideoFramework_Example-acknowledgements.plist */,
+				AFF1B469B1D886AF2E6C31D4DE184C42 /* Pods-UpgameVideoFramework_Example-dummy.m */,
+				18F4D5905B4A83BD3A1512FBAD24619E /* Pods-UpgameVideoFramework_Example-frameworks.sh */,
+				79AEEA8CDD3D00C566091A79EA655625 /* Pods-UpgameVideoFramework_Example-Info.plist */,
+				C4F28571E427E12E964F81D3D57F3998 /* Pods-UpgameVideoFramework_Example-umbrella.h */,
+				32F2EA697C6B9EAE6CD3B138C6E6162E /* Pods-UpgameVideoFramework_Example.debug.xcconfig */,
+				15ADC1CD3E231FA7BD82231912F48268 /* Pods-UpgameVideoFramework_Example.release.xcconfig */,
+			);
+			name = "Pods-UpgameVideoFramework_Example";
+			path = "Target Support Files/Pods-UpgameVideoFramework_Example";
+			sourceTree = "<group>";
+		};
+		8E65C20FDE527F8CC9B12D534722E786 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBC38432CBA1ED9C7436BEBAD47B2F20 /* UpgameVideoFramework-xcframeworks.sh */,
+				B08041E4E62CFEEC80A2559A47898208 /* UpgameVideoFramework.debug.xcconfig */,
+				C4380D0AD5A6F620CD9E90EBCFE507EE /* UpgameVideoFramework.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UpgameVideoFramework";
+			sourceTree = "<group>";
+		};
+		C24E5911A5D4E15C84029E4A9B4F65FF /* UpgameVideoFramework */ = {
+			isa = PBXGroup;
+			children = (
+				33A820E5F7D95F8D9CF0477603C273E2 /* Frameworks */,
+				8E65C20FDE527F8CC9B12D534722E786 /* Support Files */,
+			);
+			name = UpgameVideoFramework;
+			path = UpgameVideoFramework;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				D1C2FA113B2322CC1C5D870ABE4EBBDA /* Pods */,
+				33C99FA6C038EC8F447BA7F066477715 /* Products */,
+				55AB31806A59935005B9F0DA39727FB3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D1C2FA113B2322CC1C5D870ABE4EBBDA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C24E5911A5D4E15C84029E4A9B4F65FF /* UpgameVideoFramework */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FD087083CFC355F4100403F1DAEEC88E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				578C8D090DAE309084FB9D5C00ADD1E3 /* Pods-UpgameVideoFramework_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E2850FD020F6E0402DE3C63C7E0D9043 /* Pods-UpgameVideoFramework_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39A82FB3F82C4193A7D747949C41D21D /* Build configuration list for PBXNativeTarget "Pods-UpgameVideoFramework_Example" */;
+			buildPhases = (
+				FD087083CFC355F4100403F1DAEEC88E /* Headers */,
+				CF3A44CAAA33E423AC58021637962951 /* Sources */,
+				2104C1ED064CB79179118C7BFDB321CD /* Frameworks */,
+				9E295D72AC884225889AFB95048DD707 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				325C5A87D97FD8DE5842DC7E8F16FA1D /* PBXTargetDependency */,
+			);
+			name = "Pods-UpgameVideoFramework_Example";
+			productName = Pods_UpgameVideoFramework_Example;
+			productReference = A2FF71A339C82B41FBD647A97BF077E0 /* Pods-UpgameVideoFramework_Example */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 33C99FA6C038EC8F447BA7F066477715 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2850FD020F6E0402DE3C63C7E0D9043 /* Pods-UpgameVideoFramework_Example */,
+				78876A5B363C730B235789634429AA64 /* UpgameVideoFramework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9E295D72AC884225889AFB95048DD707 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		42716E96F8767B71EA57D15D810E52FE /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/UpgameVideoFramework/UpgameVideoFramework-xcframeworks.sh",
+				"${PODS_ROOT}/UpgameVideoFramework/UpgameVideoFramework.xcframework",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputPaths = (
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/UpgameVideoFramework/UpgameVideoFramework.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/UpgameVideoFramework/UpgameVideoFramework-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF3A44CAAA33E423AC58021637962951 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD6DE1902FAA0A2B717E50E6DED3B855 /* Pods-UpgameVideoFramework_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		325C5A87D97FD8DE5842DC7E8F16FA1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UpgameVideoFramework;
+			target = 78876A5B363C730B235789634429AA64 /* UpgameVideoFramework */;
+			targetProxy = E1A2F6AF979F892A9B311E18A3150CD5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		013F949512260E273CB258EB77664D94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B08041E4E62CFEEC80A2559A47898208 /* UpgameVideoFramework.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		58F9C33D69D99A4705D221B18F53BC44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4380D0AD5A6F620CD9E90EBCFE507EE /* UpgameVideoFramework.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7D01CC7BAA5D9692DF846404CBD2F0C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15ADC1CD3E231FA7BD82231912F48268 /* Pods-UpgameVideoFramework_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-UpgameVideoFramework_Example/Pods-UpgameVideoFramework_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-UpgameVideoFramework_Example/Pods-UpgameVideoFramework_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		A0ACB0926B7FE2019AEA3E4CD377D64E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32F2EA697C6B9EAE6CD3B138C6E6162E /* Pods-UpgameVideoFramework_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-UpgameVideoFramework_Example/Pods-UpgameVideoFramework_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-UpgameVideoFramework_Example/Pods-UpgameVideoFramework_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0292B543A9ED3FC480716DF145356E39 /* Build configuration list for PBXAggregateTarget "UpgameVideoFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				013F949512260E273CB258EB77664D94 /* Debug */,
+				58F9C33D69D99A4705D221B18F53BC44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39A82FB3F82C4193A7D747949C41D21D /* Build configuration list for PBXNativeTarget "Pods-UpgameVideoFramework_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0ACB0926B7FE2019AEA3E4CD377D64E /* Debug */,
+				7D01CC7BAA5D9692DF846404CBD2F0C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DE5143C03248BB6CD542DE3963D6F3A /* Debug */,
+				9E406C6AAF85E580207CD97B0044DEAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

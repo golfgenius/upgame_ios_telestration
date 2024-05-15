@@ -1,0 +1,1022 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UpgameVideoFramework
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import AVKit
+import AssetsLibrary
+import CoreGraphics
+import CoreLocation
+import CoreMedia
+import Foundation
+import MobileCoreServices
+import Photos
+import QuartzCore
+import ReplayKit
+import Swift
+import UIKit.UIGestureRecognizerSubclass
+import UIKit
+@_exported import UpgameVideoFramework
+import _Concurrency
+import _StringProcessing
+public protocol AnyStoreSubscriber : AnyObject {
+  func _newState(state: Any)
+}
+public protocol StoreSubscriber : UpgameVideoFramework.AnyStoreSubscriber {
+  associatedtype StoreSubscriberStateType
+  func newState(state: Self.StoreSubscriberStateType)
+}
+extension UpgameVideoFramework.StoreSubscriber {
+  public func _newState(state: Any)
+}
+public protocol Action {
+}
+public struct ReSwiftInit : UpgameVideoFramework.Action {
+}
+public enum SketchToolType : Swift.Int {
+  case pen
+  case eraser
+  case line
+  case arrow
+  case rectangleStroke
+  case rectangleFill
+  case ellipseStroke
+  case ellipseFill
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum ImageRenderingMode : Swift.Int {
+  case scale
+  case original
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol SketchViewDelegate : ObjectiveC.NSObjectProtocol {
+  @objc var currentTime: Swift.Double { get }
+  @objc var isTimeBasedDrawingsEnabled: Swift.Bool { get }
+  @objc optional func drawView(_ view: UpgameVideoFramework.SketchView, willBeginDrawUsingTool tool: Swift.AnyObject)
+  @objc optional func drawView(_ view: UpgameVideoFramework.SketchView, didEndDrawUsingTool tool: Swift.AnyObject)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SketchView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var stampImage: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var lineAlpha: CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) public var lineWidth: CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) public var lineColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) public var drawTool: UpgameVideoFramework.SketchToolType
+  @_Concurrency.MainActor(unsafe) public var drawingPenType: UpgameVideoFramework.PenType
+  @_Concurrency.MainActor(unsafe) public var sketchViewDelegate: (any UpgameVideoFramework.SketchViewDelegate)?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var bounds: CoreFoundation.CGRect {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) public func clear()
+  @_Concurrency.MainActor(unsafe) public func loadImage(image: UIKit.UIImage, drawMode: UpgameVideoFramework.ImageRenderingMode = .scale)
+  @_Concurrency.MainActor(unsafe) public func undo()
+  @_Concurrency.MainActor(unsafe) public func redo()
+  @_Concurrency.MainActor(unsafe) public func canUndo() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) public func canRedo() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) public func canUndoAll() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) public func canRedoAll() -> Swift.Bool
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class InfiniteCollectionViewController : UIKit.UICollectionViewController {
+  @_Concurrency.MainActor(unsafe) public var infiniteCollectionView: UpgameVideoFramework.InfiniteCollectionView? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(collectionViewLayout layout: UIKit.UICollectionViewLayout)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+open class Store<State> : UpgameVideoFramework.StoreType {
+  public var state: State! {
+    get
+  }
+  public var dispatchFunction: UpgameVideoFramework.DispatchFunction! {
+    get
+    set
+  }
+  public var middleware: [UpgameVideoFramework.Middleware<State>] {
+    get
+    set
+  }
+  required public init(reducer: @escaping UpgameVideoFramework.Reducer<State>, state: State?, middleware: [UpgameVideoFramework.Middleware<State>] = [], automaticallySkipsRepeats: Swift.Bool = true)
+  open func subscribe<S>(_ subscriber: S) where State == S.StoreSubscriberStateType, S : UpgameVideoFramework.StoreSubscriber
+  open func subscribe<SelectedState, S>(_ subscriber: S, transform: ((UpgameVideoFramework.Subscription<State>) -> UpgameVideoFramework.Subscription<SelectedState>)?) where SelectedState == S.StoreSubscriberStateType, S : UpgameVideoFramework.StoreSubscriber
+  open func unsubscribe(_ subscriber: any UpgameVideoFramework.AnyStoreSubscriber)
+  open func _defaultDispatch(action: any UpgameVideoFramework.Action)
+  open func dispatch(_ action: any UpgameVideoFramework.Action)
+  @available(*, deprecated, message: "Deprecated in favor of https://github.com/ReSwift/ReSwift-Thunk")
+  open func dispatch(_ actionCreatorProvider: @escaping UpgameVideoFramework.Store<State>.ActionCreator)
+  @available(*, deprecated, message: "Deprecated in favor of https://github.com/ReSwift/ReSwift-Thunk")
+  open func dispatch(_ asyncActionCreatorProvider: @escaping UpgameVideoFramework.Store<State>.AsyncActionCreator)
+  @available(*, deprecated, message: "Deprecated in favor of https://github.com/ReSwift/ReSwift-Thunk")
+  open func dispatch(_ actionCreatorProvider: @escaping UpgameVideoFramework.Store<State>.AsyncActionCreator, callback: UpgameVideoFramework.Store<State>.DispatchCallback?)
+  public typealias DispatchCallback = (State) -> Swift.Void
+  @available(*, deprecated, message: "Deprecated in favor of https://github.com/ReSwift/ReSwift-Thunk")
+  public typealias ActionCreator = (_ state: State, _ store: UpgameVideoFramework.Store<State>) -> (any UpgameVideoFramework.Action)?
+  @available(*, deprecated, message: "Deprecated in favor of https://github.com/ReSwift/ReSwift-Thunk")
+  public typealias AsyncActionCreator = (_ state: State, _ store: UpgameVideoFramework.Store<State>, _ actionCreatorCallback: @escaping (((_ state: State, _ store: UpgameVideoFramework.Store<State>) -> (any UpgameVideoFramework.Action)?) -> Swift.Void)) -> Swift.Void
+  @objc deinit
+}
+extension UpgameVideoFramework.Store {
+  public func subscribe<SelectedState, S>(_ subscriber: S, transform: ((UpgameVideoFramework.Subscription<State>) -> UpgameVideoFramework.Subscription<SelectedState>)?) where SelectedState : Swift.Equatable, SelectedState == S.StoreSubscriberStateType, S : UpgameVideoFramework.StoreSubscriber
+}
+extension UpgameVideoFramework.Store where State : Swift.Equatable {
+  public func subscribe<S>(_ subscriber: S) where State == S.StoreSubscriberStateType, S : UpgameVideoFramework.StoreSubscriber
+}
+@_hasMissingDesignatedInitializers public class Subscription<State> {
+  public init(sink: @escaping (@escaping (State?, State) -> Swift.Void) -> Swift.Void)
+  public func select<Substate>(_ selector: @escaping (State) -> Substate) -> UpgameVideoFramework.Subscription<Substate>
+  public func select<Substate>(_ keyPath: Swift.KeyPath<State, Substate>) -> UpgameVideoFramework.Subscription<Substate>
+  public func skipRepeats(_ isRepeat: @escaping (_ oldState: State, _ newState: State) -> Swift.Bool) -> UpgameVideoFramework.Subscription<State>
+  public var observer: ((State?, State) -> Swift.Void)?
+  @objc deinit
+}
+extension UpgameVideoFramework.Subscription where State : Swift.Equatable {
+  public func skipRepeats() -> UpgameVideoFramework.Subscription<State>
+}
+extension UpgameVideoFramework.Subscription {
+  public func skip(when: @escaping (_ oldState: State, _ newState: State) -> Swift.Bool) -> UpgameVideoFramework.Subscription<State>
+  public func only(when: @escaping (_ oldState: State, _ newState: State) -> Swift.Bool) -> UpgameVideoFramework.Subscription<State>
+}
+public typealias Reducer<ReducerStateType> = (_ action: any UpgameVideoFramework.Action, _ state: ReducerStateType?) -> ReducerStateType
+@available(*, deprecated, message: "Conforming your state to `StateType` is no longer necessary. You may remove this conformance.")
+public protocol StateType {
+}
+public protocol ThumbSelectorViewDelegate : AnyObject {
+  func didChangeThumbPosition(_ imageTime: CoreMedia.CMTime)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class ThumbSelectorView : UpgameVideoFramework.AVAssetTimeSelector {
+  @_Concurrency.MainActor(unsafe) public var thumbBorderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) weak public var delegate: (any UpgameVideoFramework.ThumbSelectorViewDelegate)?
+  @_Concurrency.MainActor(unsafe) public var selectedTime: CoreMedia.CMTime? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class VideoCropView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var asset: AVFoundation.AVAsset? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var aspectRatio: CoreFoundation.CGSize {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var player: AVFoundation.AVPlayer? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public func setAspectRatio(_ aspectRatio: CoreFoundation.CGSize, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func getImageCropFrame() -> CoreFoundation.CGRect
+  @objc deinit
+}
+@objc public protocol InfiniteCollectionViewDelegate {
+  @objc optional func infiniteCollectionView(_ infiniteCollectionView: UpgameVideoFramework.InfiniteCollectionView, didChangeCenteredIndexPath from: Foundation.IndexPath?, to: Foundation.IndexPath?)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class InfiniteCollectionView : UIKit.UICollectionView {
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak open var infiniteDelegate: (any UpgameVideoFramework.InfiniteCollectionViewDelegate)?
+  @_Concurrency.MainActor(unsafe) open var centeredIndexPath: Foundation.IndexPath? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var preferredCenteredIndexPath: Foundation.IndexPath?
+  @_Concurrency.MainActor(unsafe) open var forwardDelegate: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override weak dynamic open var delegate: (any UIKit.UICollectionViewDelegate)? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override weak dynamic open var dataSource: (any UIKit.UICollectionViewDataSource)? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isItemPagingEnabled: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var velocityMultiplier: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var infiniteLayout: UpgameVideoFramework.InfiniteLayout! {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect, collectionViewLayout layout: UIKit.UICollectionViewLayout)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @objc deinit
+}
+extension UpgameVideoFramework.InfiniteCollectionView : UIKit.UICollectionViewDataSource {
+  @_Concurrency.MainActor(unsafe) public func section(from infiniteSection: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) public func indexPath(from infiniteIndexPath: Foundation.IndexPath) -> Foundation.IndexPath
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in collectionView: UIKit.UICollectionView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+}
+extension UpgameVideoFramework.InfiniteCollectionView : UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewWillEndDragging(_ scrollView: UIKit.UIScrollView, withVelocity velocity: CoreFoundation.CGPoint, targetContentOffset: Swift.UnsafeMutablePointer<CoreFoundation.CGPoint>)
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class M13Checkbox : UIKit.UIControl {
+  public enum CheckState : Swift.String {
+    case unchecked
+    case checked
+    case mixed
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum BoxType : Swift.String {
+    case circle
+    case square
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum MarkType : Swift.String {
+    case checkmark
+    case radio
+    case addRemove
+    case disclosure
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum Animation : Swift.RawRepresentable, Swift.Hashable {
+    case stroke
+    case fill
+    case bounce(UpgameVideoFramework.M13Checkbox.AnimationStyle)
+    case expand(UpgameVideoFramework.M13Checkbox.AnimationStyle)
+    case flat(UpgameVideoFramework.M13Checkbox.AnimationStyle)
+    case spiral
+    case fade(UpgameVideoFramework.M13Checkbox.AnimationStyle)
+    case dot(UpgameVideoFramework.M13Checkbox.AnimationStyle)
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+    public typealias RawValue = Swift.String
+  }
+  public enum AnimationStyle : Swift.String {
+    case stroke
+    case fill
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) open var checkedValue: Any?
+  @_Concurrency.MainActor(unsafe) open var uncheckedValue: Any?
+  @_Concurrency.MainActor(unsafe) open var mixedValue: Any?
+  @_Concurrency.MainActor(unsafe) open var value: Any? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var checkState: UpgameVideoFramework.M13Checkbox.CheckState {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open func setCheckState(_ newState: UpgameVideoFramework.M13Checkbox.CheckState, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) open func toggleCheckState(_ animated: Swift.Bool = false)
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var animationDuration: Foundation.TimeInterval {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var stateChangeAnimation: UpgameVideoFramework.M13Checkbox.Animation {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var enableMorphing: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var secondaryTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var secondaryCheckmarkTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var checkmarkLineWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var markType: UpgameVideoFramework.M13Checkbox.MarkType {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open func setMarkType(markType: UpgameVideoFramework.M13Checkbox.MarkType, animated: Swift.Bool)
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var boxLineWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var cornerRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var boxType: UpgameVideoFramework.M13Checkbox.BoxType {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var hideBox: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func tintColorDidChange()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class InfiniteDataSources {
+  public static var originCount: Swift.Int
+  public static func section(from infiniteSection: Swift.Int, numberOfSections: Swift.Int) -> Swift.Int
+  public static func indexPath(from infiniteIndexPath: Foundation.IndexPath, numberOfSections: Swift.Int, numberOfItems: Swift.Int) -> Foundation.IndexPath
+  public static func multiplier(estimatedItemSize: CoreFoundation.CGSize, enabled: Swift.Bool) -> Swift.Int
+  public static func numberOfSections(numberOfSections: Swift.Int, multiplier: Swift.Int) -> Swift.Int
+  public static func numberOfItemsInSection(numberOfItemsInSection: Swift.Int, numberOfSections: Swift.Int, multiplier: Swift.Int) -> Swift.Int
+  @objc deinit
+}
+public enum SwiftyJSONError : Swift.Int, Swift.Error {
+  case unsupportedType
+  case indexOutOfBounds
+  case elementTooDeep
+  case wrongType
+  case notExist
+  case invalidJSON
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension UpgameVideoFramework.SwiftyJSONError : Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public enum Type : Swift.Int {
+  case number
+  case string
+  case bool
+  case array
+  case dictionary
+  case null
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct JSON {
+  public init(data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions = []) throws
+  public init(_ object: Any)
+  public init(parseJSON jsonString: Swift.String)
+  public mutating func merge(with other: UpgameVideoFramework.JSON) throws
+  public func merged(with other: UpgameVideoFramework.JSON) throws -> UpgameVideoFramework.JSON
+  public var type: UpgameVideoFramework.`Type` {
+    get
+  }
+  public var error: UpgameVideoFramework.SwiftyJSONError? {
+    get
+  }
+  public var object: Any {
+    get
+    set
+  }
+  @available(*, unavailable, renamed: "null")
+  public static var nullJSON: UpgameVideoFramework.JSON {
+    get
+  }
+  public static var null: UpgameVideoFramework.JSON {
+    get
+  }
+}
+public enum Index<T> : Swift.Comparable {
+  case array(Swift.Int)
+  case dictionary(Swift.DictionaryIndex<Swift.String, T>)
+  case null
+  public static func == (lhs: UpgameVideoFramework.Index<T>, rhs: UpgameVideoFramework.Index<T>) -> Swift.Bool
+  public static func < (lhs: UpgameVideoFramework.Index<T>, rhs: UpgameVideoFramework.Index<T>) -> Swift.Bool
+}
+public typealias JSONIndex = UpgameVideoFramework.Index<UpgameVideoFramework.JSON>
+public typealias JSONRawIndex = UpgameVideoFramework.Index<Any>
+extension UpgameVideoFramework.JSON : Swift.Collection {
+  public typealias Index = UpgameVideoFramework.JSONRawIndex
+  public var startIndex: UpgameVideoFramework.JSON.Index {
+    get
+  }
+  public var endIndex: UpgameVideoFramework.JSON.Index {
+    get
+  }
+  public func index(after i: UpgameVideoFramework.JSON.Index) -> UpgameVideoFramework.JSON.Index
+  public subscript(position: UpgameVideoFramework.JSON.Index) -> (Swift.String, UpgameVideoFramework.JSON) {
+    get
+  }
+  public typealias Element = (Swift.String, UpgameVideoFramework.JSON)
+  public typealias Indices = Swift.DefaultIndices<UpgameVideoFramework.JSON>
+  public typealias Iterator = Swift.IndexingIterator<UpgameVideoFramework.JSON>
+  public typealias SubSequence = Swift.Slice<UpgameVideoFramework.JSON>
+}
+public enum JSONKey {
+  case index(Swift.Int)
+  case key(Swift.String)
+}
+public protocol JSONSubscriptType {
+  var jsonKey: UpgameVideoFramework.JSONKey { get }
+}
+extension Swift.Int : UpgameVideoFramework.JSONSubscriptType {
+  public var jsonKey: UpgameVideoFramework.JSONKey {
+    get
+  }
+}
+extension Swift.String : UpgameVideoFramework.JSONSubscriptType {
+  public var jsonKey: UpgameVideoFramework.JSONKey {
+    get
+  }
+}
+extension UpgameVideoFramework.JSON {
+  public subscript(path: [any UpgameVideoFramework.JSONSubscriptType]) -> UpgameVideoFramework.JSON {
+    get
+    set
+  }
+  public subscript(path: any UpgameVideoFramework.JSONSubscriptType...) -> UpgameVideoFramework.JSON {
+    get
+    set
+  }
+}
+extension UpgameVideoFramework.JSON : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public init(extendedGraphemeClusterLiteral value: Swift.StringLiteralType)
+  public init(unicodeScalarLiteral value: Swift.StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension UpgameVideoFramework.JSON : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.IntegerLiteralType)
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension UpgameVideoFramework.JSON : Swift.ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: Swift.BooleanLiteralType)
+  public typealias BooleanLiteralType = Swift.BooleanLiteralType
+}
+extension UpgameVideoFramework.JSON : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: Swift.FloatLiteralType)
+  public typealias FloatLiteralType = Swift.FloatLiteralType
+}
+extension UpgameVideoFramework.JSON : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Any)...)
+  public typealias Key = Swift.String
+  public typealias Value = Any
+}
+extension UpgameVideoFramework.JSON : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Any...)
+  public typealias ArrayLiteralElement = Any
+}
+extension UpgameVideoFramework.JSON : Swift.RawRepresentable {
+  public init?(rawValue: Any)
+  public var rawValue: Any {
+    get
+  }
+  public func rawData(options opt: Foundation.JSONSerialization.WritingOptions = JSONSerialization.WritingOptions(rawValue: 0)) throws -> Foundation.Data
+  public func rawString(_ encoding: Swift.String.Encoding = .utf8, options opt: Foundation.JSONSerialization.WritingOptions = .prettyPrinted) -> Swift.String?
+  public func rawString(_ options: [UpgameVideoFramework.writingOptionsKeys : Any]) -> Swift.String?
+  public typealias RawValue = Any
+}
+extension UpgameVideoFramework.JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension UpgameVideoFramework.JSON {
+  public var array: [UpgameVideoFramework.JSON]? {
+    get
+  }
+  public var arrayValue: [UpgameVideoFramework.JSON] {
+    get
+  }
+  public var arrayObject: [Any]? {
+    get
+    set
+  }
+}
+extension UpgameVideoFramework.JSON {
+  public var dictionary: [Swift.String : UpgameVideoFramework.JSON]? {
+    get
+  }
+  public var dictionaryValue: [Swift.String : UpgameVideoFramework.JSON] {
+    get
+  }
+  public var dictionaryObject: [Swift.String : Any]? {
+    get
+    set
+  }
+}
+extension UpgameVideoFramework.JSON {
+  public var bool: Swift.Bool? {
+    get
+    set
+  }
+  public var boolValue: Swift.Bool {
+    get
+    set
+  }
+}
+extension UpgameVideoFramework.JSON {
+  public var string: Swift.String? {
+    get
+    set
+  }
+  public var stringValue: Swift.String {
+    get
+    set
+  }
+}
+extension UpgameVideoFramework.JSON {
+  public var number: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var numberValue: Foundation.NSNumber {
+    get
+    set
+  }
+}
+extension UpgameVideoFramework.JSON {
+  public var null: Foundation.NSNull? {
+    get
+    set
+  }
+  public func exists() -> Swift.Bool
+}
+extension UpgameVideoFramework.JSON {
+  public var url: Foundation.URL? {
+    get
+    set
+  }
+}
+extension UpgameVideoFramework.JSON {
+  public var double: Swift.Double? {
+    get
+    set
+  }
+  public var doubleValue: Swift.Double {
+    get
+    set
+  }
+  public var float: Swift.Float? {
+    get
+    set
+  }
+  public var floatValue: Swift.Float {
+    get
+    set
+  }
+  public var int: Swift.Int? {
+    get
+    set
+  }
+  public var intValue: Swift.Int {
+    get
+    set
+  }
+  public var uInt: Swift.UInt? {
+    get
+    set
+  }
+  public var uIntValue: Swift.UInt {
+    get
+    set
+  }
+  public var int8: Swift.Int8? {
+    get
+    set
+  }
+  public var int8Value: Swift.Int8 {
+    get
+    set
+  }
+  public var uInt8: Swift.UInt8? {
+    get
+    set
+  }
+  public var uInt8Value: Swift.UInt8 {
+    get
+    set
+  }
+  public var int16: Swift.Int16? {
+    get
+    set
+  }
+  public var int16Value: Swift.Int16 {
+    get
+    set
+  }
+  public var uInt16: Swift.UInt16? {
+    get
+    set
+  }
+  public var uInt16Value: Swift.UInt16 {
+    get
+    set
+  }
+  public var int32: Swift.Int32? {
+    get
+    set
+  }
+  public var int32Value: Swift.Int32 {
+    get
+    set
+  }
+  public var uInt32: Swift.UInt32? {
+    get
+    set
+  }
+  public var uInt32Value: Swift.UInt32 {
+    get
+    set
+  }
+  public var int64: Swift.Int64? {
+    get
+    set
+  }
+  public var int64Value: Swift.Int64 {
+    get
+    set
+  }
+  public var uInt64: Swift.UInt64? {
+    get
+    set
+  }
+  public var uInt64Value: Swift.UInt64 {
+    get
+    set
+  }
+}
+extension UpgameVideoFramework.JSON : Swift.Comparable {
+}
+public func == (lhs: UpgameVideoFramework.JSON, rhs: UpgameVideoFramework.JSON) -> Swift.Bool
+public func <= (lhs: UpgameVideoFramework.JSON, rhs: UpgameVideoFramework.JSON) -> Swift.Bool
+public func >= (lhs: UpgameVideoFramework.JSON, rhs: UpgameVideoFramework.JSON) -> Swift.Bool
+public func > (lhs: UpgameVideoFramework.JSON, rhs: UpgameVideoFramework.JSON) -> Swift.Bool
+public func < (lhs: UpgameVideoFramework.JSON, rhs: UpgameVideoFramework.JSON) -> Swift.Bool
+public enum writingOptionsKeys {
+  case jsonSerialization
+  case castNilToNSNull
+  case maxObjextDepth
+  case encoding
+  public static func == (a: UpgameVideoFramework.writingOptionsKeys, b: UpgameVideoFramework.writingOptionsKeys) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension UpgameVideoFramework.JSON : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum ColorPickerViewStyle {
+  case square
+  case circle
+  public static func == (a: UpgameVideoFramework.ColorPickerViewStyle, b: UpgameVideoFramework.ColorPickerViewStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ColorPickerViewSelectStyle {
+  case check
+  case none
+  public static func == (a: UpgameVideoFramework.ColorPickerViewSelectStyle, b: UpgameVideoFramework.ColorPickerViewSelectStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ColorPickerView : UIKit.UIView, UIKit.UICollectionViewDelegate, UIKit.UICollectionViewDataSource, UIKit.UICollectionViewDelegateFlowLayout {
+  @_Concurrency.MainActor(unsafe) open var colors: [UIKit.UIColor] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) weak open var layoutDelegate: (any UpgameVideoFramework.ColorPickerViewDelegateFlowLayout)?
+  @_Concurrency.MainActor(unsafe) weak open var delegate: (any UpgameVideoFramework.ColorPickerViewDelegate)?
+  @_Concurrency.MainActor(unsafe) open var indexOfSelectedColor: Swift.Int? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var preselectedIndex: Swift.Int? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var isSelectedColorTappable: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var scrollToPreselectedIndex: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var style: UpgameVideoFramework.ColorPickerViewStyle
+  @_Concurrency.MainActor(unsafe) open var selectionStyle: UpgameVideoFramework.ColorPickerViewSelectStyle
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func selectColor(at index: Swift.Int, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func scrollToSelectedColor(_ animated: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, willDisplay cell: UIKit.UICollectionViewCell, forItemAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didDeselectItemAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, sizeForItemAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, minimumLineSpacingForSectionAt section: Swift.Int) -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Swift.Int) -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, insetForSectionAt section: Swift.Int) -> UIKit.UIEdgeInsets
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public struct Theme {
+  public var primaryColor: UIKit.UIColor
+  public var secondaryColor: UIKit.UIColor
+  public var buttonsTintColor: UIKit.UIColor
+  public var translucentViewsOpacity: Swift.Double
+  public init(primaryColor: UIKit.UIColor, secondaryColor: UIKit.UIColor, buttonsTintColor: UIKit.UIColor, translucentViewsOpacity: Swift.Double = 0.8)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class InfiniteLayout : UIKit.UICollectionViewFlowLayout {
+  @_Concurrency.MainActor(unsafe) public var velocityMultiplier: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var currentPage: CoreFoundation.CGPoint {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func shouldInvalidateLayout(forBoundsChange newBounds: CoreFoundation.CGRect) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) convenience public init(layout: UIKit.UICollectionViewLayout)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var collectionViewContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutAttributesForItem(at indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutAttributesForElements(in rect: CoreFoundation.CGRect) -> [UIKit.UICollectionViewLayoutAttributes]?
+  @_Concurrency.MainActor(unsafe) public func rect(from rect: CoreFoundation.CGRect, page: CoreFoundation.CGPoint = .zero) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) public func loopCollectionViewIfNeeded()
+  @_Concurrency.MainActor(unsafe) public func collectionViewRect() -> CoreFoundation.CGRect?
+  @_Concurrency.MainActor(unsafe) public func visibleCollectionViewRect() -> CoreFoundation.CGRect?
+  @_Concurrency.MainActor(unsafe) public func visibleLayoutAttributes(at offset: CoreFoundation.CGPoint? = nil) -> [UIKit.UICollectionViewLayoutAttributes]
+  @_Concurrency.MainActor(unsafe) public func preferredVisibleLayoutAttributes(at offset: CoreFoundation.CGPoint? = nil, velocity: CoreFoundation.CGPoint = .zero, targetOffset: CoreFoundation.CGPoint? = nil, indexPath: Foundation.IndexPath? = nil) -> UIKit.UICollectionViewLayoutAttributes?
+  @_Concurrency.MainActor(unsafe) public func centerCollectionView(withVelocity velocity: CoreFoundation.CGPoint, targetContentOffset: Swift.UnsafeMutablePointer<CoreFoundation.CGPoint>)
+  @_Concurrency.MainActor(unsafe) public func centerCollectionViewIfNeeded(indexPath: Foundation.IndexPath? = nil)
+  @_Concurrency.MainActor(unsafe) public func copyLayoutAttributes(_ attributes: UIKit.UICollectionViewLayoutAttributes) -> UIKit.UICollectionViewLayoutAttributes?
+  @_Concurrency.MainActor(unsafe) public func copyLayoutAttributes(from array: [UIKit.UICollectionViewLayoutAttributes]) -> [UIKit.UICollectionViewLayoutAttributes]
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol TrimmerViewDelegate : AnyObject {
+  func didChangePositionBar(_ playerTime: CoreMedia.CMTime)
+  func positionBarStoppedMoving(_ playerTime: CoreMedia.CMTime)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class TrimmerView : UpgameVideoFramework.AVAssetTimeSelector {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var mainColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var handleColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var positionBarColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var maskColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) weak public var delegate: (any UpgameVideoFramework.TrimmerViewDelegate)?
+  @_Concurrency.MainActor(unsafe) public var minDuration: Swift.Double
+  @_Concurrency.MainActor(unsafe) public func seek(to time: CoreMedia.CMTime)
+  @_Concurrency.MainActor(unsafe) public var startTime: CoreMedia.CMTime? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var endTime: CoreMedia.CMTime? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc public func scrollViewDidEndDecelerating(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor(unsafe) @objc public func scrollViewDidEndDragging(_ scrollView: UIKit.UIScrollView, willDecelerate decelerate: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public protocol ColorPickerViewDelegate {
+  @objc func colorPickerView(_ colorPickerView: UpgameVideoFramework.ColorPickerView, didSelectItemAt indexPath: Foundation.IndexPath)
+  @objc optional func colorPickerView(_ colorPickerView: UpgameVideoFramework.ColorPickerView, didDeselectItemAt indexPath: Foundation.IndexPath)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class AVAssetTimeSelector : UIKit.UIView, UIKit.UIScrollViewDelegate {
+  @_Concurrency.MainActor(unsafe) public var maxDuration: Swift.Double {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var asset: AVFoundation.AVAsset? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public func regenerateThumbnails()
+  @objc deinit
+}
+public protocol DispatchingStoreType {
+  func dispatch(_ action: any UpgameVideoFramework.Action)
+}
+public protocol Coding {
+  init?(dictionary: [Swift.String : Swift.AnyObject])
+  var dictionaryRepresentation: [Swift.String : Swift.AnyObject] { get }
+}
+public class Throttle {
+  public var minimumDelay: Foundation.TimeInterval {
+    get
+  }
+  public var workingQueue: Dispatch.DispatchQueue {
+    get
+  }
+  public var lastExecute: Foundation.Date? {
+    get
+  }
+  public var lastRequestWasCanceled: Swift.Bool {
+    get
+  }
+  public var scheduled: Swift.Bool {
+    get
+  }
+  public var assignment: (() -> Swift.Void)? {
+    get
+  }
+  public init(minimumDelay delay: Foundation.TimeInterval, queue: Dispatch.DispatchQueue = DispatchQueue.main)
+  public func updateMinimumDelay(interval: Swift.Double)
+  public func throttle(job: (() -> Swift.Void)?)
+  @objc deinit
+}
+extension UpgameVideoFramework.M13Checkbox {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var _IBStateChangeAnimation: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var _IBMarkType: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var _IBBoxType: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var _IBCheckState: Swift.String {
+    @objc get
+    @objc set
+  }
+}
+public typealias DispatchFunction = (any UpgameVideoFramework.Action) -> Swift.Void
+public typealias Middleware<State> = (@escaping UpgameVideoFramework.DispatchFunction, @escaping () -> State?) -> (@escaping UpgameVideoFramework.DispatchFunction) -> UpgameVideoFramework.DispatchFunction
+public protocol Reusable : AnyObject {
+  static var reuseIdentifier: Swift.String { get }
+}
+public protocol VideoAnalysisControllerDelegate : AnyObject {
+  var preferredOrientation: UIKit.UIDeviceOrientation { get }
+  func videoAnalysisDidFinish(output: [UpgameVideoFramework.VideoAnalysisController.Object]?)
+  func videoAnalysisControllerDidRequestToDeleteMedia(in controller: UIKit.UIViewController, completion: @escaping () -> ())
+  func videoAnalysisControllerDidRequestDiscardAndClose(in controller: UIKit.UIViewController, completion: @escaping () -> ())
+  func videoAnalysisController(_ controller: UIKit.UIViewController, didRequestMediaForItemAtIndex index: Swift.Int, completion: @escaping (UpgameVideoFramework.VideoAnalysisController.Object) -> ())
+}
+public struct VideoAnalysisIconsConfiguration {
+  public var recordButtonIcon: UIKit.UIImage?
+  public var syncLockButtonIcon: UIKit.UIImage?
+  public var comparisonButtonIcon: UIKit.UIImage?
+  public var syncUnlockButtonIcon: UIKit.UIImage?
+  public var stopRecordingButtonIcon: UIKit.UIImage?
+  public init(recordButtonIcon: UIKit.UIImage? = nil, syncLockButtonIcon: UIKit.UIImage? = nil, comparisonButtonIcon: UIKit.UIImage? = nil, syncUnlockButtonIcon: UIKit.UIImage? = nil, stopRecordingButtonIcon: UIKit.UIImage? = nil)
+}
+public struct VideoAnalysisConfiguration {
+  public var themeConfiguration: UpgameVideoFramework.Theme
+  public var enableTimeBasedDrawings: Swift.Bool
+  public var defaultScrubbingDirection: Swift.Bool
+  public var iconsConfiguration: UpgameVideoFramework.VideoAnalysisIconsConfiguration
+  public var delegate: (any UpgameVideoFramework.VideoAnalysisControllerDelegate)?
+  public init(enableTimeBasedDrawings: Swift.Bool = true, defaultScrubbingDirection: Swift.Bool = true, iconsConfiguration: UpgameVideoFramework.VideoAnalysisIconsConfiguration = VideoAnalysisIconsConfiguration(), themeConfiguration: UpgameVideoFramework.Theme = Theme(primaryColor: .darkGray, secondaryColor: .black, buttonsTintColor: .white), delegate: (any UpgameVideoFramework.VideoAnalysisControllerDelegate)? = nil)
+}
+public class VideoAnalysisController {
+  public struct Object {
+    public var url: Foundation.URL
+    public var stack: UpgameVideoFramework.JSON?
+    public init(url: Foundation.URL, stack: UpgameVideoFramework.JSON? = nil)
+  }
+  @discardableResult
+  public init(media: [UpgameVideoFramework.VideoAnalysisController.Object] = [], configuration: UpgameVideoFramework.VideoAnalysisConfiguration? = nil)
+  public func present(in viewController: UIKit.UIViewController, withPresentationStyle presentationStyle: UIKit.UIModalPresentationStyle = .fullScreen)
+  public func dismiss(animated: Swift.Bool = true, completion: (() -> ())? = nil)
+  @objc deinit
+}
+public protocol SketchTool {
+  var id: Swift.String { get set }
+  var lineWidth: CoreFoundation.CGFloat { get set }
+  var lineColor: UIKit.UIColor { get set }
+  var lineAlpha: CoreFoundation.CGFloat { get set }
+  var path: CoreGraphics.CGMutablePath { get set }
+  var time: Swift.Double { get set }
+  func updatePath(from oldRect: CoreFoundation.CGRect, to newRect: CoreFoundation.CGRect)
+  func setInitialPoint(_ firstPoint: CoreFoundation.CGPoint)
+  func moveFromPoint(_ startPoint: CoreFoundation.CGPoint, toPoint endPoint: CoreFoundation.CGPoint)
+  func draw()
+  func remove()
+  func jsonValue(using size: CoreFoundation.CGSize, withPoints: Swift.Bool) -> UpgameVideoFramework.JSON
+}
+public enum PenType : Swift.Int {
+  case normal
+  case blur
+  case neon
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol StoreType : UpgameVideoFramework.DispatchingStoreType {
+  associatedtype State
+  var state: Self.State! { get }
+  var dispatchFunction: UpgameVideoFramework.DispatchFunction! { get }
+  func subscribe<S>(_ subscriber: S) where S : UpgameVideoFramework.StoreSubscriber, Self.State == S.StoreSubscriberStateType
+  func subscribe<SelectedState, S>(_ subscriber: S, transform: ((UpgameVideoFramework.Subscription<Self.State>) -> UpgameVideoFramework.Subscription<SelectedState>)?) where SelectedState == S.StoreSubscriberStateType, S : UpgameVideoFramework.StoreSubscriber
+  func subscribe<SelectedState, S>(_ subscriber: S, transform: ((UpgameVideoFramework.Subscription<Self.State>) -> UpgameVideoFramework.Subscription<SelectedState>)?) where SelectedState : Swift.Equatable, SelectedState == S.StoreSubscriberStateType, S : UpgameVideoFramework.StoreSubscriber
+  func unsubscribe(_ subscriber: any UpgameVideoFramework.AnyStoreSubscriber)
+  func dispatch(_ actionCreator: Self.ActionCreator)
+  func dispatch(_ asyncActionCreator: Self.AsyncActionCreator)
+  func dispatch(_ asyncActionCreator: Self.AsyncActionCreator, callback: Self.DispatchCallback?)
+  associatedtype DispatchCallback = (Self.State) -> Swift.Void
+  associatedtype ActionCreator = (_ state: Self.State, _ store: any UpgameVideoFramework.StoreType) -> (any UpgameVideoFramework.Action)?
+  associatedtype AsyncActionCreator = (_ state: Self.State, _ store: any UpgameVideoFramework.StoreType, _ actionCreatorCallback: (Self.ActionCreator) -> Swift.Void) -> Swift.Void
+}
+@objc public protocol ColorPickerViewDelegateFlowLayout {
+  @objc optional func colorPickerView(_ colorPickerView: UpgameVideoFramework.ColorPickerView, sizeForItemAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGSize
+  @objc optional func colorPickerView(_ colorPickerView: UpgameVideoFramework.ColorPickerView, minimumLineSpacingForSectionAt section: Swift.Int) -> CoreFoundation.CGFloat
+  @objc optional func colorPickerView(_ colorPickerView: UpgameVideoFramework.ColorPickerView, minimumInteritemSpacingForSectionAt section: Swift.Int) -> CoreFoundation.CGFloat
+  @objc optional func colorPickerView(_ colorPickerView: UpgameVideoFramework.ColorPickerView, insetForSectionAt section: Swift.Int) -> UIKit.UIEdgeInsets
+}
+extension UpgameVideoFramework.SketchToolType : Swift.Equatable {}
+extension UpgameVideoFramework.SketchToolType : Swift.Hashable {}
+extension UpgameVideoFramework.SketchToolType : Swift.RawRepresentable {}
+extension UpgameVideoFramework.ImageRenderingMode : Swift.Equatable {}
+extension UpgameVideoFramework.ImageRenderingMode : Swift.Hashable {}
+extension UpgameVideoFramework.ImageRenderingMode : Swift.RawRepresentable {}
+extension UpgameVideoFramework.M13Checkbox.CheckState : Swift.Equatable {}
+extension UpgameVideoFramework.M13Checkbox.CheckState : Swift.Hashable {}
+extension UpgameVideoFramework.M13Checkbox.CheckState : Swift.RawRepresentable {}
+extension UpgameVideoFramework.M13Checkbox.BoxType : Swift.Equatable {}
+extension UpgameVideoFramework.M13Checkbox.BoxType : Swift.Hashable {}
+extension UpgameVideoFramework.M13Checkbox.BoxType : Swift.RawRepresentable {}
+extension UpgameVideoFramework.M13Checkbox.MarkType : Swift.Equatable {}
+extension UpgameVideoFramework.M13Checkbox.MarkType : Swift.Hashable {}
+extension UpgameVideoFramework.M13Checkbox.MarkType : Swift.RawRepresentable {}
+extension UpgameVideoFramework.M13Checkbox.AnimationStyle : Swift.Equatable {}
+extension UpgameVideoFramework.M13Checkbox.AnimationStyle : Swift.Hashable {}
+extension UpgameVideoFramework.M13Checkbox.AnimationStyle : Swift.RawRepresentable {}
+extension UpgameVideoFramework.SwiftyJSONError : Swift.Equatable {}
+extension UpgameVideoFramework.SwiftyJSONError : Swift.Hashable {}
+extension UpgameVideoFramework.SwiftyJSONError : Swift.RawRepresentable {}
+extension UpgameVideoFramework.`Type` : Swift.Equatable {}
+extension UpgameVideoFramework.`Type` : Swift.Hashable {}
+extension UpgameVideoFramework.`Type` : Swift.RawRepresentable {}
+extension UpgameVideoFramework.writingOptionsKeys : Swift.Equatable {}
+extension UpgameVideoFramework.writingOptionsKeys : Swift.Hashable {}
+extension UpgameVideoFramework.ColorPickerViewStyle : Swift.Equatable {}
+extension UpgameVideoFramework.ColorPickerViewStyle : Swift.Hashable {}
+extension UpgameVideoFramework.ColorPickerViewSelectStyle : Swift.Equatable {}
+extension UpgameVideoFramework.ColorPickerViewSelectStyle : Swift.Hashable {}
+extension UpgameVideoFramework.PenType : Swift.Equatable {}
+extension UpgameVideoFramework.PenType : Swift.Hashable {}
+extension UpgameVideoFramework.PenType : Swift.RawRepresentable {}

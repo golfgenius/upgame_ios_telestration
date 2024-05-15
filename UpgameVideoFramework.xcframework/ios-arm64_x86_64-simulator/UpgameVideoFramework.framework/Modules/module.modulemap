@@ -1,0 +1,11 @@
+framework module UpgameVideoFramework {
+  umbrella header "UpgameVideoFramework.h"
+
+  export *
+  module * { export * }
+}
+
+module UpgameVideoFramework.Swift {
+  header "UpgameVideoFramework-Swift.h"
+  requires objc
+}

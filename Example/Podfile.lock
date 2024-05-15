@@ -1,0 +1,16 @@
+PODS:
+  - UpgameVideoFramework (1.0.7)
+
+DEPENDENCIES:
+  - UpgameVideoFramework
+
+SPEC REPOS:
+  https://bitbucket.org/upgametech/ios-podspecs:
+    - UpgameVideoFramework
+
+SPEC CHECKSUMS:
+  UpgameVideoFramework: 666c6f6c9c6c1f719f3e497a660b275dcbd00245
+
+PODFILE CHECKSUM: d3784703b6d0798b2d5252c07d82b091e3a39b11
+
+COCOAPODS: 1.12.1

@@ -1,0 +1,12 @@
+use_frameworks!
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://bitbucket.org/upgametech/ios-podspecs.git'
+
+platform :ios, '13.0'
+
+target 'UpgameVideoFramework_Example' do
+
+  pod 'UpgameVideoFramework'
+  
+end
